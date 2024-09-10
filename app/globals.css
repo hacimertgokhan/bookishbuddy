@@ -5,7 +5,29 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  overflow: hidden;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #101010;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #151515;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #151515;
+}
+
+.text-fade {
+  background: linear-gradient(to bottom, rgb(255, 255, 255), rgba(0, 0, 0, 0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @media (prefers-color-scheme: dark) {

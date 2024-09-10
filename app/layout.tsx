@@ -3,6 +3,9 @@ import "./globals.css";
 import { Poppins } from 'next/font/google';
 import Navigation from "@/app/components/Navigation";
 import Footer from "@/app/components/Footer";
+import {SessionProvider} from "next-auth/react";
+import NextAuthProvider from "@/app/components/NextAuthProvider";
+import {Toaster} from "react-hot-toast";
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -23,13 +26,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-          className={`${poppins.variable}`}>
-        <Navigation/>
-        {children}
-        <Footer/>
-      </body>
+      <html lang="en">
+        <NextAuthProvider>
+            <Toaster position={"top-right"}/>
+            <body
+                className={`${poppins.variable}`}>
+            {children}
+            <Footer/>
+            </body>
+        </NextAuthProvider>
     </html>
   );
 }
