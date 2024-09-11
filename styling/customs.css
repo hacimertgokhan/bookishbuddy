@@ -1,0 +1,70 @@
+.LoginForm {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  place-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  background: #101010;
+}
+.LoginForm form {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  width: 350px;
+  place-items: center;
+  justify-content: center;
+}
+.LoginForm form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+.LoginForm form label input {
+  outline: none;
+  background: transparent;
+  border: 1px solid #202020;
+  border-style: none none solid;
+  width: 275px;
+  height: 35px;
+}
+.LoginForm form label input ::placeholder {
+  color: white;
+  opacity: 1;
+}
+.LoginForm form label input ::-ms-input-placeholder {
+  color: white;
+  opacity: 1;
+}
+.LoginForm form .CustomButton {
+  width: 200px;
+  height: 40px;
+  font-family: Poppins, sans-serif;
+  border: 1px solid #151515;
+  font-size: 17px;
+  position: relative;
+  border-radius: 6px;
+}
+.LoginForm form .CustomButton:hover .Icon {
+  border-radius: 6px;
+  background: #202020;
+  width: 100%;
+}
+.LoginForm form .CustomButton .Icon {
+  transition: 200ms;
+  z-index: 2;
+  position: absolute;
+  right: 0;
+  border-radius: 0 6px 6px 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  height: 100%;
+}
+
+/*# sourceMappingURL=customs.css.map */

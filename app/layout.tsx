@@ -4,6 +4,7 @@ import { Poppins } from 'next/font/google';
 import Navigation from "@/app/components/Navigation";
 import Footer from "@/app/components/Footer";
 import {SessionProvider} from "next-auth/react";
+import '../styling/customs.css';
 import NextAuthProvider from "@/app/components/NextAuthProvider";
 import {Toaster} from "react-hot-toast";
 
@@ -32,7 +33,6 @@ export default function RootLayout({
             <body
                 className={`${poppins.variable}`}>
             {children}
-            <Footer/>
             </body>
         </NextAuthProvider>
     </html>

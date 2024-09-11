@@ -3,6 +3,7 @@
 import React, {useState} from 'react';
 import {signIn} from "next-auth/react";
 import toast from "react-hot-toast";
+import {AiOutlineRight} from "react-icons/ai";
 
 const Page = () => {
     const [password, setPassword] = useState(null);
@@ -21,37 +22,47 @@ const Page = () => {
 
         if (result?.error === null) {
             window.location.replace("/");
-            toast.error('Başarıyla giriş yaptın.'); // Displays a success message
+            toast.success('Başarıyla giriş yaptın.'); // Displays a success message
         } else {
             toast.error('Kullanıcı adın ya da şifren hatalı.'); // Displays a success message
         }
     };
 
     return (
-        <div className={"w-screen h-screen flex justify-center items-center"}>
-            <div className={"w-[450px] h-[550px] flex items-center justify-center flex-col bg-transparent border-[1px] border-zinc-900"}>
-                <h1 className={"text-center text-2xl font-bold"}>BookishBuddy`e Hoşgeldin !</h1>
-                <br/>
-                <form className="flex w-[300px] flex-col text-white gap-12" onSubmit={handleSubmit}>
-                    <label className={"flex flex-col gap-1 font-sans font-bold text-xl"}>
-                        Email adresin,
+        <div className={"w-screen h-screen flex flex-row justify-between items-center"}>
+            <div className={"grid grid-cols-1 grid-rows-4 items-center justify-center h-screen p-24 w-1/2"}>
+                <h1 className={"font-bold text-7xl font-sans"}>BookishBuddy<br/><p className={"text-3xl font-normal"}>En yakın kitap arkadaşın.</p></h1>
+                <div>
+                </div>
+            </div>
+            <div className={"LoginForm"}>
+                <form onSubmit={handleSubmit}>
+                    <label>
+                        <p className={"font-bold font-sans text-xl"}>Email adresin,</p>
                         <input
-                            className={"outline-none mt-2 border-[1px] border-zinc-900 py-1 px-4 rounded-sm bg-transparent text-white font-sans font-normal text-md"}
+                            type={"email"}
+                            placeholder={"Lütfen email adresinizi belirtin."}
                             onChange={(e) => {
-                            // @ts-ignore
-                            setEmail(e.currentTarget.value)
-                        }}/>
+                                // @ts-ignore
+                                setEmail(e.currentTarget.value)
+                            }}/>
                     </label>
-                    <label className={"flex flex-col gap-1 font-sans font-bold text-xl"}>
-                        Şifren,
+                    <label>
+                        <p className={"font-bold font-sans text-xl"}>Şifren,</p>
                         <input
-                            className={"outline-none mt-2 border-[1px] border-zinc-900 py-1 px-4 rounded-sm bg-transparent text-white font-sans font-normal text-md"}
+                            type={"password"}
+                            placeholder={"Hesap şifrenizi belirtin."}
                             onChange={(e) => {
                                 // @ts-ignore
                                 setPassword(e.currentTarget.value)
                             }}/>
                     </label>
-                    <button type={"submit"}>Giriş yap</button>
+                    <button type={"submit"} className={"CustomButton"}>
+                        Giriş yap
+                        <span className={"Icon"}>
+                            <AiOutlineRight/>
+                        </span>
+                    </button>
                 </form>
             </div>
         </div>

@@ -6,6 +6,7 @@ import {MdLogin, MdLogout, MdNotes, MdVerifiedUser} from "react-icons/md";
 import {CgQuote} from "react-icons/cg";
 import {BiHome} from "react-icons/bi";
 import {useSession} from "next-auth/react";
+import SignOut from "@/app/components/SignOut";
 
 const Navigation = () => {
     const linkClass = "flex items-center justify-center gap-1";
@@ -25,7 +26,7 @@ const Navigation = () => {
                         <Link href={"/profile"} className={linkClass}><MdVerifiedUser/> Profilim</Link>
                     </li>
                     <li>
-                        <Link href={"/logout"} className={linkClass}><MdLogout/> Çıkış yap</Link>
+                        <SignOut><MdLogout/> Çıkış yap</SignOut>
                     </li>
                 </>
             )

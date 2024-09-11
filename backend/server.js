@@ -7,6 +7,7 @@ const app = express()
 
 import create_account from './routes/createAccount.js';
 import loging_account from './routes/loginAccount.js';
+import editProfile from './routes/editProfile.js';
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -33,6 +34,7 @@ export const success = (res, success, status) => {
 
 app.use('/auth', create_account);
 app.use('/auth', loging_account);
+app.use('/profile', editProfile);
 
 app.listen(process.env.SERVER_PORT, () => {
     console.log(`Server started at ${process.env.SERVER_PORT}`)
