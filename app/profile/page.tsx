@@ -2,13 +2,16 @@
 
 import Image from "next/image";
 import {useSession} from "next-auth/react";
-import React from "react";
+import React, {useState} from "react";
 import Footer from "@/app/components/Footer";
 import Navigation from "@/app/components/Navigation";
 import {useRouter} from "next/navigation";
 import toast from "react-hot-toast";
+import {GiPencil} from "react-icons/gi";
+import EditProfile from "@/app/components/EditProfile";
 
 export default function Home() {
+    const [edit, setEdit] = useState(false)
     const {data:session, status} = useSession()
     const router = useRouter();
     if(!session) {
@@ -32,12 +35,17 @@ export default function Home() {
                   <br/>
                   <div className={"grid xl:w-[1000px] xl:flex justify-center flex-col grid-cols-1 items-center"}>
                       <button
-                          className={"border-zinc-900 transition-all hover:border-zinc-800 border-[1px] px-4 py-1 rounded-md text-sm"}>Profimi
-                          Düzenle
+                          onClick={() => {
+                              setEdit(true);
+                          }}
+                          className={"border-zinc-900 flex gap-1 items-center justify-center hover:gap-2 transition-all hover:border-zinc-800 border-[1px] px-4 py-1 rounded-md text-sm"}>
+                          <GiPencil/> Açıklamayı Düzenle
                       </button>
                   </div>
               </div>
               <Footer/>
+              {edit ? 
+                  <EditProfile setEdit={setEdit} email={session?.user.email}/> : <></>}
           </>
     );
 }

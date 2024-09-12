@@ -5,9 +5,10 @@ import {compare, hash} from 'bcrypt'
 const prisma = new PrismaClient()
 
 const router = express.Router();
-router.post('/list', async (req, res) => {
+router.post('/delete-note-by-id', async (req, res) => {
     const email = req.body.email;
     const id = req.body.id;
+    const belong_to = req.body.belong_to;
     if(!email || !id) {
         return error(res, "Girilen bilgiler geçersiz ya da eksik.", 400)
     }
@@ -18,12 +19,17 @@ router.post('/list', async (req, res) => {
             },
         })
         if(checkEmail) {
-            const user = await prisma.notes.findMany({
+            const user = await prisma.notes.delete({
                 where: {
-                    belong_to: id,
+                    id: id,
                 },
               })
             if(user) {
+                const user = await prisma.notes.findMany({
+                    where: {
+                        belong_to: belong_to,
+                    },
+                  })
                 return success(res, user, 200)
             } else {
                 return error(res, "Veriler bulunamadı.", 404)

@@ -12,6 +12,7 @@ declare module "next-auth" {
             id: number,
             avatar: number,
             permission: number,
+            description: string,
             jwt: string
         } & DefaultSession["user"]
     }

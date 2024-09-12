@@ -5,7 +5,7 @@ import {compare, hash} from 'bcrypt'
 const prisma = new PrismaClient()
 
 const router = express.Router();
-router.post('/update', async (req, res) => {
+router.post('/description', async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     const description = req.body.description;
@@ -20,7 +20,7 @@ router.post('/update', async (req, res) => {
         })
         if(checkEmail) {
             const isPasswordsMatch = await compare(password, checkEmail.password);
-            const user = await prisma.user.update({
+            const user = await prisma.users.update({
                 where: {
                     email: email,
                 },

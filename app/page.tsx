@@ -16,7 +16,7 @@ export default function Home() {
                         <p className={"font-medium text-3xl"}>BookishBuddy, sizi her çağa götürür.</p>
                         <br/>
                         <br/>
-                        <a className={"w-[150px] h-[35px] bg-white text-zinc-800 p-4 cursor-pointer hover:bg-zinc-100 transition-all outline-none border-none font-bold text-xl rounded-md"}>
+                        <a href="/notes" className={"w-[150px] h-[35px] bg-white text-zinc-800 p-4 cursor-pointer hover:bg-zinc-100 transition-all outline-none border-none font-bold text-xl rounded-md"}>
                             Hmm, denemekten zarar gelmez ?
                         </a>
                     </div>

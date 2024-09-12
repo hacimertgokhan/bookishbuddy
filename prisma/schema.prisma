@@ -23,6 +23,7 @@ model Notes {
   belong_to  Int
   title      String   @unique @db.VarChar(256)
   created_at DateTime @default(now())
+  writer     String
   note       String   @db.VarChar(5012)
   deep_note  String   @db.VarChar(5012)
   between    String   @db.VarChar(256)

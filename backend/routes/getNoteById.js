@@ -5,10 +5,11 @@ import {compare, hash} from 'bcrypt'
 const prisma = new PrismaClient()
 
 const router = express.Router();
-router.post('/list', async (req, res) => {
+router.post('/get-note-by-id', async (req, res) => {
     const email = req.body.email;
     const id = req.body.id;
-    if(!email || !id) {
+    const note_id = req.body.note_id;
+    if(!email || !id || !note_id) {
         return error(res, "Girilen bilgiler geçersiz ya da eksik.", 400)
     }
     try {
@@ -18,9 +19,9 @@ router.post('/list', async (req, res) => {
             },
         })
         if(checkEmail) {
-            const user = await prisma.notes.findMany({
+            const user = await prisma.notes.findFirst({
                 where: {
-                    belong_to: id,
+                    id: note_id,
                 },
               })
             if(user) {

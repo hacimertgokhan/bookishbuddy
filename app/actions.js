@@ -28,7 +28,6 @@ export const signIn = async (url, email, password) => {
             email: email,
             password: password
         }),
-
     });
 
     return await ResponseException(result);

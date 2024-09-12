@@ -3,11 +3,13 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import {signIn} from "@/app/actions";
 import { PrismaClient } from '@prisma/client'
 import {cookies} from "next/headers";
+// @ts-ignore
 import jwt from "jsonwebtoken";
 const prisma = new PrismaClient()
 
 export const authOptions = {
     callbacks: {
+        // @ts-ignore
         async session({session}) {
             const e = cookies().get("token");
             const decode = jwt.decode(e?.value);
