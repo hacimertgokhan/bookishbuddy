@@ -7,10 +7,9 @@ const prisma = new PrismaClient()
 const router = express.Router();
 router.post('/update', async (req, res) => {
     const email = req.body.email;
-    const avatar = req.body.avatar;
     const password = req.body.password;
     const description = req.body.description;
-    if(!description || !avatar || !password || !email) {
+    if(!description || !password || !email) {
         return error(res, "Girilen bilgiler geçersiz ya da eksik.", 400)
     }
     try {
@@ -26,7 +25,6 @@ router.post('/update', async (req, res) => {
                     email: email,
                 },
                 data: { 
-                    avatar: avatar,
                     description: description,
                  },
               })
