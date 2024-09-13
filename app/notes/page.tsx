@@ -9,21 +9,18 @@ import {useSession} from "next-auth/react";
 import NoteItem from "@/app/components/NoteItem";
 import Loading from "@/app/components/Loading";
 import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
 
 export default function Home() {
     const [enable, setEnable] = useState(false)
     const {data:session, status} = useSession()
     const router = useRouter();
-    if(!session) {
-        toast.error("Hey, öncelikle giriş yapmalısın !")
-        router.push('/login');
-    }
     const [notes, setNotes] = useState([]);
-    const [found, setFound] = useState(false)
-    const [loaded, setLoaded] = useState(false)
+    const [found, setFound] = useState(true)
+    const [loaded, setLoaded] = useState(true)
 
     const getAllNotesByUserId = async () => {
+        setLoaded(false)
+        setFound(false)
         try {
             fetch('http://localhost:8000/note/list', {
                 cache: "no-cache",
@@ -55,14 +52,16 @@ export default function Home() {
                 });
         } catch (e) {
             setNotes([]);
-            setFound(false)
+            setFound(true)
             setLoaded(true)
             console.log(e)
         }
     }
 
     useEffect(() => {
-        getAllNotesByUserId()
+        if(session) {
+            getAllNotesByUserId()
+        }
     }, [])
 
     return (
@@ -76,16 +75,11 @@ export default function Home() {
                   {
                       loaded ? (
                           found ? (
-                              notes === null ? (
-                                  <Loading></Loading>
-                              ) : (
-
-                                  notes.map((a:any, b:number) => {
-                                      return (
-                                          <NoteItem id={session?.user.id} setNotes={setNotes} email={session?.user.email} data={a} key={b}/>
-                                      )
-                                  })
-                              )
+                            notes.map((a:any, b:number) => {
+                                return (
+                                    <NoteItem update={getAllNotesByUserId} id={session?.user.id} setNotes={setNotes} email={session?.user.email} data={a} key={b}/>
+                                )
+                            })
                           ) : (
                               <Loading></Loading>
                           )
@@ -97,7 +91,7 @@ export default function Home() {
           </div>
           {
               enable === true ? (
-                  <CreateNote setNotes={setNotes} setEnable={setEnable} id={session?.user.id} email={session?.user.email}/>
+                  <CreateNote setFound={setFound} setLoaded={setLoaded} key={"Create Note Key"} update={getAllNotesByUserId} setNotes={setNotes} setEnable={setEnable} id={session?.user.id} email={session?.user.email}/>
               ) : (
                   <></>
               )

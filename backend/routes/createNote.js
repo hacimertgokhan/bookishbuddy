@@ -14,7 +14,7 @@ router.post('/create', async (req, res) => {
     const deep_note = req.body.deep_note;
     const between = req.body.between;
     const book_name = req.body.book_name;
-    if(!title || !email || !book_name || !between || !deep_note || !note || !id) {
+    if(!title || !email || !book_name || !between || !deep_note || !note || !id) {a
         return error(res, "Girilen bilgiler geçersiz ya da eksik.", 400)
     }
     try {

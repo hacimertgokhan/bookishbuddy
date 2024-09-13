@@ -28,33 +28,6 @@ const Page = (props:Props) => {
         router.push('/login');
     }
 
-    
-    const DeleteNote = () => {
-        try {
-            fetch('http://localhost:8000/note/delete-note-by-id', {
-                method: "POST",
-                cache: "no-cache",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    email: note.email,
-                    id: note.id,
-                    belong_to: note.belong_to,
-                })
-            }).then(response => response.json())
-            .then(data => {
-                toast.success("Not başarıyla silindi !");
-                router.push('/notes');
-                return data;
-            }).catch(error => {
-                return error;
-            })
-        } catch(e) {
-            console.log(e)
-        }
-    }
-
     const getNoteById = async () => {
         try {
             fetch('http://localhost:8000/note/get-note-by-id', {
@@ -100,8 +73,12 @@ const Page = (props:Props) => {
                         found ? (
                             <div className={"grid grid-cols-1 grid-rows-3 gap-5 items-center justify-center"}>
                                 <div>
-                                    <h1 className={"text-5xl font-bold font-sans"}>{note.title}</h1>
-                                    <p className={"text-2xl font-thin font-sans"}>{note.book_name}</p>
+                                    <h1 className={"text-5xl font-bold font-sans"}>                                                {
+                                                //@ts-ignore
+                                                note.title}</h1>
+                                    <p className={"text-2xl font-thin font-sans"}>                                                {
+                                                //@ts-ignore
+                                                note.book_name}</p>
                                 </div>
                                 
                                 <div className={"grid grid-cols-1 grid-rows-2 gap-5 items-center justify-center"}>
@@ -109,7 +86,9 @@ const Page = (props:Props) => {
                                         <label className={"flex-col text-2xl flex font-bold font-sans"}>
                                             Ana notunuz
                                             <div className={"text-xl font-thin font-sans"}>
-                                                {note.note}
+                                                {
+                                                //@ts-ignore
+                                                note.note}
                                             </div>
                                         </label>
                                     </div>
@@ -118,7 +97,9 @@ const Page = (props:Props) => {
                                         <label className={"flex-col text-2xl flex font-bold font-sans"}>
                                             Dip not ve Anahtar kelimeler
                                             <div className={"text-xl font-thin font-sans"}>
-                                                {note.deep_note}
+                                                {
+                                                //@ts-ignore
+                                                note.deep_note}
                                             </div>
                                         </label>
                                     </div>
@@ -127,7 +108,9 @@ const Page = (props:Props) => {
                                         <label className={"flex-col text-2xl flex font-bold font-sans"}>
                                             Yazar
                                             <div className={"text-xl font-thin font-sans"}>
-                                                {note.writer}
+                                                {
+                                                //@ts-ignore
+                                                note.writer}
                                             </div>
                                         </label>
                                     </div>
@@ -141,12 +124,11 @@ const Page = (props:Props) => {
                 }
             </div>
 
-            <div className={"w-screen absolute text-xl gap-12 flex items-center justify-center bottom-0 h-[150px]"}>
+            <div className={"w-screen fixed text-xl gap-12 flex items-center justify-center bottom-0 h-[75px]"}>
                 <button
                     onClick={() => {router.push('./')}}
                 ><AiFillHome/></button>
                 <button><BiEdit/></button>
-                <button onClick={() => {DeleteNote()}}><BsTrash/></button>
                 <button><GoDownload/></button>
             </div>
 

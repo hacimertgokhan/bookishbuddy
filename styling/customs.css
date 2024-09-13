@@ -6,7 +6,7 @@
   justify-content: center;
   width: 50%;
   height: 100%;
-  background: #101010;
+  background: rgba(16, 16, 16, 0.3137254902);
 }
 .LoginForm form {
   display: flex;
@@ -28,6 +28,10 @@
   border-style: none none solid;
   width: 275px;
   height: 35px;
+}
+.LoginForm form label input ::-moz-placeholder {
+  color: white;
+  opacity: 1;
 }
 .LoginForm form label input ::placeholder {
   color: white;
@@ -65,6 +69,4 @@
   justify-content: center;
   place-items: center;
   height: 100%;
-}
-
-/*# sourceMappingURL=customs.css.map */
+}/*# sourceMappingURL=customs.css.map */

@@ -11,6 +11,7 @@ interface Props {
     email: any,
     id: any,
     setNotes: any,
+    update: any,
 }
 
 const NoteItem = (props:Props) => {
@@ -32,6 +33,7 @@ const NoteItem = (props:Props) => {
             .then(data => {
                 toast.success("Not başarıyla silindi !");
                 props.setNotes(data.data);
+                props.update();
                 return data;
             }).catch(error => {
                 return error;

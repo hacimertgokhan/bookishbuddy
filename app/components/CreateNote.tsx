@@ -10,6 +10,9 @@ interface Props {
     email: any
     id: any,
     setNotes: any,
+    setLoaded: any,
+    setFound: any,
+    update: any,
 }
 
 const CreateNote = (props:Props) => {
@@ -23,7 +26,6 @@ const CreateNote = (props:Props) => {
     const [Public, setPublic] = useState(false)
 
     async function Form(e:any) {
-        e.preventDefault();
         try {
             fetch('http://localhost:8000/note/create', {
                 cache: "no-cache",
@@ -45,21 +47,26 @@ const CreateNote = (props:Props) => {
             })
                 .then(response => {response.json()})
                 .then(data => {
-                    props.setNotes(data.data);
                     toast.success("Not başarıyla eklendi !")
                     props.setEnable(false)
+                    //@ts-ignore
+                    props.setNotes(data.data);
+                    props.setFound(true)
+                    props.setLoaded(true)
+                    return data;
                 })
                 .catch(error => {
                     props.setEnable(false)
                     console.error('Hata ' + error);
-            })
+                    return error;
+                })
         } catch(e) {
             console.log(e)
         }
     }
 
     return (
-        <div className={"absolute w-screen top-0 h-screen flex items-center justify-center m-auto"}>
+        <div style={{zIndex: '5'}} className={"absolute w-screen top-0 h-screen flex items-center justify-center m-auto"}>
             <form onSubmit={Form} style={{zIndex: '3'}}
                  className={"bg-[#101010] w-[900px] items-center justify-center border-dashed border-zinc-900 h-[700px] flex flex-col gap-6 border-[1px] p-12"}>
                 <label className={"flex w-full text-start font-sans flex-col font-bold text-4xl"}>
