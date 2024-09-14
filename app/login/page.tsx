@@ -29,11 +29,9 @@ const Page = () => {
     };
 
     return (
-        <div className={"w-screen h-screen flex flex-row justify-between items-center"}>
-            <div className={"grid grid-cols-1 grid-rows-4 items-center justify-center h-screen p-24 w-1/2"}>
+        <div className={"w-screen h-screen xl:flex xl:flex-row xl:justify-between justify-center items-center"}>
+            <div className={"xl:grid-cols-1 xl:grid xl:w-[1000px] hidden xl:grid-rows-4 items-center justify-center h-screen p-24 w-1/2"}>
                 <h1 className={"font-bold text-7xl font-sans"}>BookishBuddy<br/><p className={"text-3xl font-normal"}>En yakın kitap arkadaşın.</p></h1>
-                <div>
-                </div>
             </div>
             <div className={"LoginForm"}>
                 <form onSubmit={handleSubmit}>

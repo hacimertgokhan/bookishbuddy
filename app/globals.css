@@ -5,7 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 ::-webkit-scrollbar {

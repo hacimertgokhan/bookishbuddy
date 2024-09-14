@@ -8,7 +8,7 @@ interface Props {
 
 const NotePanel = (props:Props) => {
     return (
-        <div className={"xl:w-[1000px] flex m-auto items-center justify-between h-[75px]"}>
+        <div className={"xl:w-[1000px] md:w-[700px] sm:w-[400px] w-[350px] flex m-auto items-center justify-between h-[75px]"}>
             <div className={"flex gap-12 items-center justify-center"}>
                 <button
                     onClick={() => {

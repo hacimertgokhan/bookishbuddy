@@ -22,7 +22,7 @@ export default function Home() {
           <>
             <Navigation/>
               <div className="w-screen select-none items-center h-screen flex flex-col">
-                  <div className={"p-12 grid xl:w-[1000px] xl:flex justify-center flex-col grid-cols-1 items-center"}>
+                  <div className={"p-12 w-screen flex justify-center flex-col grid-cols-1 items-center"}>
                       <Image className={"rounded-full"}
                           // @ts-ignore
                              src={session?.user.avatar} alt={"hacimertgokhan"} width={100} height={100}/>

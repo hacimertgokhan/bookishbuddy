@@ -9,6 +9,7 @@ import {useSession} from "next-auth/react";
 import NoteItem from "@/app/components/NoteItem";
 import Loading from "@/app/components/Loading";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function Home() {
     const [enable, setEnable] = useState(false)
@@ -17,7 +18,10 @@ export default function Home() {
     const [notes, setNotes] = useState([]);
     const [found, setFound] = useState(true)
     const [loaded, setLoaded] = useState(true)
-
+    if(!session) {
+        toast.error("Hey, öncelikle giriş yapmalısın !")
+        router.push('/login');
+    }
     const getAllNotesByUserId = async () => {
         setLoaded(false)
         setFound(false)

@@ -17,16 +17,16 @@ const Navigation = () => {
             return (
                 <>
                     <li>
-                        <Link href={"/"} className={linkClass}><BiHome/> Anasayfa</Link>
+                        <Link href={"/"} className={linkClass}><BiHome/> <p className='xl:flex hidden'>Anasayfa</p></Link>
                     </li>
                     <li>
-                        <Link href={"/notes"} className={linkClass}><MdNotes/> Notlarım</Link>
+                        <Link href={"/notes"} className={linkClass}><MdNotes/> <p className='xl:flex hidden'>Notlarım</p></Link>
                     </li>
                     <li>
-                        <Link href={"/profile"} className={linkClass}><MdVerifiedUser/> Profilim</Link>
+                        <Link href={"/profile"} className={linkClass}><MdVerifiedUser/> <p className='xl:flex hidden'>Profilim</p></Link>
                     </li>
                     <li>
-                        <SignOut><MdLogout/> Çıkış yap</SignOut>
+                        <SignOut><MdLogout/> <p className='xl:flex hidden'>Çıkış</p></SignOut>
                     </li>
                 </>
             )
@@ -34,10 +34,10 @@ const Navigation = () => {
             return (
                 <>
                     <li>
-                        <Link href={"/about"} className={linkClass}><CgQuote/> BookishBuddy Nedir ?</Link>
+                        <Link href={"/about"} className={linkClass}><CgQuote/> <p className='xl:flex hidden'>Bookishbuddy nedir ?</p></Link>
                     </li>
                     <li>
-                        <Link href={"/login"} className={linkClass}><MdLogin/> Giriş yap</Link>
+                        <Link href={"/login"} className={linkClass}><MdLogin/> <p className=''>Giriş yap</p></Link>
                     </li>
                 </>
             )
@@ -45,9 +45,9 @@ const Navigation = () => {
     }
 
     return (
-        <div className={"w-screen flex items-center justify-between p-12 h-[75px]"}>
+        <div className={"w-screen flex items-center justify-between xl:p-12 md:p-8 sm:p-4 p-4 h-[75px]"}>
             <h1 className={"font-bold md:text-3xl"}>BookishBuddy</h1>
-            <ul className={"flex items-center justify-center gap-24 font-sans"}>
+            <ul className={"flex items-center justify-center xl:gap-24 md:gap-12 sm:gap-6 gap-6 font-sans"}>
                 <LoadWithSessionStatus/>
             </ul>
         </div>

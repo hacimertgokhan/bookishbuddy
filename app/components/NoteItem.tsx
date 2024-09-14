@@ -51,8 +51,8 @@ const NoteItem = (props:Props) => {
                 <p className={"text-sm"}>{props.data.writer}</p>
             </div>
             <div className={"-translate-y-12 h-[225px] text-fade w-full"}>
-                <p>
-                    {props.data.note}
+                <p style={{whiteSpace: 'wrap', overflow: 'hidden', textOverflow: 'ellipsis', height: '165px'}} className='TextOverflow'>
+                    {props.data.note}...
                 </p>
             </div>
             <div className={"w-full h-[75px] mt-1 flex items-center justify-between"}>

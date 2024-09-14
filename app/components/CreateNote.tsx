@@ -68,13 +68,12 @@ const CreateNote = (props:Props) => {
     return (
         <div style={{zIndex: '5'}} className={"absolute w-screen top-0 h-screen flex items-center justify-center m-auto"}>
             <form onSubmit={Form} style={{zIndex: '3'}}
-                 className={"bg-[#101010] w-[900px] items-center justify-center border-dashed border-zinc-900 h-[700px] flex flex-col gap-6 border-[1px] p-12"}>
+                 className={"bg-[#101010] xl:w-[900px] md:w-[450px] items-center justify-center border-dashed border-zinc-900 h-[700px] md:h-screen flex flex-col gap-6 border-[1px] p-12"}>
                 <label className={"flex w-full text-start font-sans flex-col font-bold text-4xl"}>
                     Oh, Bu harika !
                     <p className={"font-sans text-4xl font-thin text-indigo-300"}>Yeni Bir Not.</p>
                 </label>
-                <br/>
-                <div className={"grid grid-cols-2 grid-rows-1 gap-6"}>
+                <div className={"grid xl:grid-cols-2 md:grid-cols-1 md:gap-6 grid-rows-1 gap-2"}>
                     <input type={"text"}
                            placeholder={"Başlık."}
                            className={"w-[250px] p-2 h-fit mt-1 border-zinc-900 bg-transparent outline-none rounded-md transition-all hover:border-zinc-800 border-[1px]"}
@@ -108,35 +107,37 @@ const CreateNote = (props:Props) => {
                         onChange={(e) => {
                             setDeepNote(e.currentTarget.value);
                         }}/>
-                    <div className={"flex-col flex"}>
-                        <label className={"font-bold font-sans ml-1"}>Sayfa Aralığı</label>
-                        <div className={"flex-row gap-1 items-center flex"}>
-                            <input type={"text"}
-                                   placeholder={"0"}
-                                   className={"w-[40px] p-2 h-fit mt-1 border-zinc-900 bg-transparent outline-none rounded-md transition-all text-sm hover:border-zinc-800"}
-                                   onChange={(e) => {
-                                       setMin(Number(e.currentTarget.value));
-                                   }}/> |
-                            <input type={"text"}
-                                   placeholder={"0"}
-                                   className={"w-[40px] p-2 h-fit mt-1 border-zinc-900 bg-transparent outline-none rounded-md transition-all text-sm hover:border-zinc-800"}
-                                   onChange={(e) => {
-                                       setMax(Number(e.currentTarget.value));
-                                   }}/>
+                        <div className='flex justify-between mt-1'>
+                            <div className={"flex-col flex"}>
+                            <label className={"font-bold font-sans ml-1"}>Sayfa Aralığı</label>
+                            <div className={"flex-row gap-1 items-center flex"}>
+                                <input type={"text"}
+                                    placeholder={"0"}
+                                    className={"w-[40px] p-2 h-fit mt-1 border-zinc-900 bg-transparent outline-none rounded-md transition-all text-sm hover:border-zinc-800"}
+                                    onChange={(e) => {
+                                        setMin(Number(e.currentTarget.value));
+                                    }}/> |
+                                <input type={"text"}
+                                    placeholder={"0"}
+                                    className={"w-[40px] p-2 h-fit mt-1 border-zinc-900 bg-transparent outline-none rounded-md transition-all text-sm hover:border-zinc-800"}
+                                    onChange={(e) => {
+                                        setMax(Number(e.currentTarget.value));
+                                    }}/>
+                            </div>
                         </div>
-                    </div>
-                    <div className={"relative items-center h-[45px] justify-center flex flex-col rounded-xl"}>
-                        <label className={"text-md font-bold font-sans "}>
-                            Herkese Açık
-                        </label>
-                        <span
-                            onClick={() => {
-                                setPublic(!Public)
-                            }}
-                            className={"w-[40px] h-[20px] bg-indigo-300 rounded-full border-[1px] border-zinc-900 hover:border-zinc-800 relative"}>
-                            <span className={`w-[20px] h-[20px] cursor-pointer -translate-y-[1px] ${Public === true ? "translate-x-[20px] bg-indigo-500" : "-translate-x-[1px] bg-indigo-200"} transition-all absolute rounded-full`}></span>
-                        </span>
-                    </div>
+                        <div className={"relative items-center h-[45px] justify-center flex flex-col rounded-xl"}>
+                            <label className={"text-md font-bold font-sans "}>
+                                Herkese Açık
+                            </label>
+                            <span
+                                onClick={() => {
+                                    setPublic(!Public)
+                                }}
+                                className={"w-[40px] h-[20px] bg-indigo-300 rounded-full border-[1px] border-zinc-900 hover:border-zinc-800 relative"}>
+                                <span className={`w-[20px] h-[20px] cursor-pointer -translate-y-[1px] ${Public === true ? "translate-x-[20px] bg-indigo-500" : "-translate-x-[1px] bg-indigo-200"} transition-all absolute rounded-full`}></span>
+                            </span>
+                        </div>
+                        </div>
                 </div>
                 <button
                     type={"submit"}

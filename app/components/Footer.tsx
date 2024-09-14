@@ -6,17 +6,14 @@ import {CgAnchor, CgLink, CgQuote, CgSupport} from "react-icons/cg";
 const Navigation = () => {
     const linkClass = "flex items-center justify-center gap-1";
     return (
-        <div className={"w-screen flex fixed bottom-0 items-center justify-between p-12 h-[75px]"}>
-            <h1 className={"font-thin"}>BookishBuddy, Bütün hakları saklıdır.</h1>
-            <ul className={"flex items-center justify-center gap-24 font-sans"}>
+        <div className={"w-screen flex fixed bottom-0 items-center justify-between xl:p-12 md:p-8 sm:p-4 p-4 h-[75px]"}>
+            <h1 className={"font-thin xl:text-xl md:text-sm"}>BookishBuddy, Bütün hakları saklıdır.</h1>
+            <ul className={"flex items-center justify-center xl:gap-24 md:gap-12 sm:gap-6 gap-6 font-sans"}>
                 <li>
-                    <Link href={""} className={linkClass}><CgSupport/> Destek</Link>
+                    <Link href={""} className={linkClass}><CgSupport/> <p className='xl:flex hidden'>Destek</p></Link>
                 </li>
                 <li>
-                    <Link href={""} className={linkClass}><CgLink/> İletişim</Link>
-                </li>
-                <li>
-                    <Link href={""} className={linkClass}><CgAnchor/> Diğer</Link>
+                    <Link href={""} className={linkClass}><CgAnchor/> <p className='xl:flex hidden'>Diğer</p></Link>
                 </li>
             </ul>
         </div>
